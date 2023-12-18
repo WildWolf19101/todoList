@@ -7,7 +7,7 @@ import TodoList from './Pages/todoList'
 
 
 // Layouts
-import AllList from './Pages/todoList/All'
+import AllList from './Pages/todoList/AllList'
 import ActiveListPages from './Pages/todoList/ActiveList'
 import CompleteListPages from './Pages/todoList/CompleteList'
 
