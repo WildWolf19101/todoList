@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { NavLink, Outlet } from 'react-router-dom'
 
 import Header from '../../Layouts/Header'
 import Footer from '../../Layouts/Footer'
@@ -10,6 +9,8 @@ import TodoFilter from './TodoFilter'
 const todoList = () => {
     const [todos, setTodos] = useState([]);
     const [filterStatus, setFilterStatus] = useState('all');
+
+
 
     // add
     const addTodo = todo => {
@@ -41,8 +42,8 @@ const todoList = () => {
 
     // complete
     const completeTodo = (id) => {
-        setTodos((todos) => {
-            let updatedTodos = todos.map((todo) => {
+        setTodos((prevTodos) => {
+            const updatedTodos = prevTodos.map((todo) => {
                 if (todo.id === id) {
                     return { ...todo, isComplete: !todo.isComplete };
                 }
