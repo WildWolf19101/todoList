@@ -166,7 +166,9 @@ body {
 }
 
 .todo-filter-status .active {
+    border-radius: 5px;
     border: 1px solid var(--kmin-color-1);
+    padding: 3px;
 }
 
 .todo-filter-count {
