@@ -1,14 +1,15 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
 
 import Header from '../../Layouts/Header'
 import Footer from '../../Layouts/Footer'
 import Form from './TodoForm'
 import Todo from './Todo'
+import TodoFilter from './TodoFilter'
 
 const todoList = () => {
     const [todos, setTodos] = useState([]);
-    const [filterStatus, setFilterStatus] = useState('all')
+    const [filterStatus, setFilterStatus] = useState('all');
 
     // add
     const addTodo = todo => {
@@ -84,29 +85,7 @@ const todoList = () => {
                 <div className="todo-container">
                     <Form onSubmit={addTodo} />
 
-                    <div className="todo-filter-container">
-                        <div className="todo-filter-count">3 items left</div>
-                        <div className="todo-filter-status">
-                            <span
-                                className={filterStatus === 'all' ? 'active' : ''}
-                                onClick={() => handleFilterClick('all')}
-                            >
-                                All
-                            </span>
-                            <span
-                                className={filterStatus === 'active' ? 'active' : ''}
-                                onClick={() => handleFilterClick('active')}
-                            >
-                                Active
-                            </span>
-                            <span
-                                className={filterStatus === 'completed' ? 'active' : ''}
-                                onClick={() => handleFilterClick('completed')}
-                            >
-                                Completed
-                            </span>
-                        </div>
-                    </div>
+                    <TodoFilter filterStatus={filterStatus} handleFilterClick={handleFilterClick} />
 
                     <div className="todo-list-container">
                         <Todo

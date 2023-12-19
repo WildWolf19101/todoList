@@ -152,7 +152,7 @@ body {
     border-radius: 10px;
 }
 
-.todo-filter-status a {
+.todo-filter-status span {
     color: #777;
     font-weight: 300;
     text-decoration: none;
@@ -161,14 +161,12 @@ body {
     border-radius: 10px;
 }
 
-.todo-filter-status a:hover {
+.todo-filter-status span:hover {
     cursor: pointer;
 }
 
 .todo-filter-status .active {
-    border-radius: 5px;
     border: 1px solid var(--kmin-color-1);
-    padding: 3px;
 }
 
 .todo-filter-count {
