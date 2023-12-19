@@ -37,14 +37,23 @@ const todoList = () => {
         setTodos(removedArr);
     };
 
-    const completeTodo = id => {
-        let updatedTodos = todos.map(todo => {
-            if (todo.id === id) {
-                todo.isComplete = !todo.isComplete;
-            }
-            return todo;
+    const completeTodo = (id) => {
+        setTodos((todos) => {
+            let updatedTodos = todos.map((todo) => {
+                if (todo.id === id) {
+                    return { ...todo, isComplete: !todo.isComplete };
+                }
+                return todo;
+            });
+
+            // Sắp xếp mảng sao cho task chưa hoàn thành lên trên
+            const sortedTodos = [
+                ...updatedTodos.filter((todo) => !todo.isComplete),
+                ...updatedTodos.filter((todo) => todo.isComplete),
+            ];
+
+            return sortedTodos;
         });
-        setTodos(updatedTodos);
     };
 
 
