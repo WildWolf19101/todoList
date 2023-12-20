@@ -1,7 +1,4 @@
 import React, { useEffect, useState } from 'react'
-
-import Header from '../../Layouts/Header'
-import Footer from '../../Layouts/Footer'
 import Form from './TodoForm'
 import Todo from './Todo'
 import TodoFilter from './TodoFilter'
@@ -87,10 +84,7 @@ const todoList = () => {
 
 
     return (
-        <div className="Root-layout">
-
-            <Header />
-
+        <>
             <div className="todo-container-wrapper">
                 <div className="todo-container">
                     <Form onSubmit={addTodo} />
@@ -105,13 +99,9 @@ const todoList = () => {
                             updateTodo={updateTodo}
                         />
                     </div>
-
-
                 </div>
             </div>
-
-            <Footer />
-        </div>
+        </>
     )
 }
 
