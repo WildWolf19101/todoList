@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import Form from './TodoForm'
-import Todo from './Todo'
-import TodoFilter from './TodoFilter'
+import Form from './todoList/TodoForm'
+import Todo from './todoList/Todo'
+import TodoFilter from './todoList/TodoFilter'
 
 const todoList = () => {
 

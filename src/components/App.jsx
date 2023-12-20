@@ -2,7 +2,7 @@ import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 
 // Pages
-import TodoList from './Pages/todoList/todoList'
+import TodoList from './Pages/TodoList'
 import Header from '../components/Layouts/Header'
 import Footer from '../components/Layouts/Footer'
 
