@@ -7,10 +7,19 @@ import Todo from './Todo'
 import TodoFilter from './TodoFilter'
 
 const todoList = () => {
-    const [todos, setTodos] = useState([]);
-    const [filterStatus, setFilterStatus] = useState('all');
 
+    // Nạp trạng thái từ local storage khi component được mount
+    const initialTodos = JSON.parse(localStorage.getItem('todos')) || [];
+    const initialFilterStatus = localStorage.getItem('filterStatus') || 'all';
 
+    const [todos, setTodos] = useState(initialTodos);
+    const [filterStatus, setFilterStatus] = useState(initialFilterStatus);
+
+    useEffect(() => {
+        // Lưu trạng thái vào local storage mỗi khi todos hoặc filterStatus thay đổi
+        localStorage.setItem('todos', JSON.stringify(todos));
+        localStorage.setItem('filterStatus', filterStatus);
+    }, [todos, filterStatus]);
 
     // add
     const addTodo = todo => {
