@@ -9,14 +9,9 @@ import Footer from '../components/Layouts/Footer'
 import TodoList from './Pages/TodoList'
 import NotFound from './Pages/NotFound'
 
-//css
-import '../assets/css/App.css'
-
-
-
 const App = () => {
   return (
-    <div className="Root-layout">
+    <>
       <Header />
 
       <Routes>
@@ -25,7 +20,7 @@ const App = () => {
       </Routes>
 
       <Footer />
-    </div>
+    </>
 
   )
 }

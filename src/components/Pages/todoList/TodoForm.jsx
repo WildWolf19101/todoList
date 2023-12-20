@@ -1,5 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react'
 
+// css
+import '../../../assets/css/TodoForm.css'
+
 
 const Form = (props) => {
     const [input, setInput] = useState(props.edit ? props.edit.value : '');

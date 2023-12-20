@@ -1,5 +1,8 @@
 import React from 'react'
 
+// css
+import '../../assets/css/Header.css'
+
 const Header = () => {
     return (
         <h3 className="header">

@@ -5,6 +5,9 @@ import Form from './todoList/TodoForm'
 import Todo from './todoList/Todo'
 import TodoFilter from './todoList/TodoFilter'
 
+// css
+import '../../assets/css/TodoList.css'
+
 const todoList = () => {
 
     // Nạp trạng thái từ local storage khi component được mount

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import '../../../assets/css/TodoFilter.css'
+
 const TodoFilter = ({ filterStatus, handleFilterClick }) => {
     return (
         <div className="todo-filter-container">

@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import TodoForm from './TodoForm';
 
+// css
+import '../../../assets/css/Todo.css'
+
 // image
 import activeTick from '../../../assets/images/active-tick.svg'
 import editIcon from '../../../assets/images/edit.svg'
