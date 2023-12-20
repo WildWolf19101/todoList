@@ -1,14 +1,16 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 
-// Pages
-import TodoList from './Pages/TodoList'
+// Layout
 import Header from '../components/Layouts/Header'
 import Footer from '../components/Layouts/Footer'
 
+// Pages
+import TodoList from './Pages/TodoList'
+import NotFound from './Pages/NotFound'
+
 //css
 import '../assets/css/App.css'
-import NotFound from './Pages/NotFound'
 
 
 
