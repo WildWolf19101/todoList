@@ -1,6 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+// css
+import '../../assets/css/TodoList.css'
+
 const NotFound = () => {
     return (
         <div className="todo-container-wrapper">

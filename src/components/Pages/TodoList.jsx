@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react'
 
 // todoList
-import Form from './todoList/TodoForm'
-import Todo from './todoList/Todo'
-import TodoFilter from './todoList/TodoFilter'
+import Form from './TodoList/TodoForm'
+import Todo from './TodoList/Todo'
+import TodoFilter from './TodoList/TodoFilter'
 
 // css
 import '../../assets/css/TodoList.css'
 
 const TodoList = () => {
-
     // Nạp trạng thái từ local storage khi component được mount
     const initialTodos = JSON.parse(localStorage.getItem('todos')) || [];
     const initialFilterStatus = localStorage.getItem('filterStatus') || 'all';
@@ -94,7 +93,7 @@ const TodoList = () => {
                 <div className="todo-container">
                     <Form onSubmit={addTodo} />
 
-                    <TodoFilter filterStatus={filterStatus} handleFilterClick={handleFilterClick} />
+                    <TodoFilter todos={todos} filterStatus={filterStatus} handleFilterClick={handleFilterClick} />
 
                     <div className="todo-list-container">
                         <Todo
