@@ -8,7 +8,7 @@ import TodoFilter from './todoList/TodoFilter'
 // css
 import '../../assets/css/TodoList.css'
 
-const todoList = () => {
+const TodoList = () => {
 
     // Nạp trạng thái từ local storage khi component được mount
     const initialTodos = JSON.parse(localStorage.getItem('todos')) || [];
@@ -110,4 +110,4 @@ const todoList = () => {
     )
 }
 
-export default todoList
+export default TodoList

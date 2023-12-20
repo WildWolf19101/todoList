@@ -4,7 +4,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import '../../../assets/css/TodoForm.css'
 
 
-const Form = (props) => {
+const TodoForm = (props) => {
     const [input, setInput] = useState(props.edit ? props.edit.value : '');
     const inputRef = useRef(null);
 
@@ -57,4 +57,4 @@ const Form = (props) => {
     )
 }
 
-export default Form
+export default TodoForm
