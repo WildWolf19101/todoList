@@ -27,23 +27,23 @@ const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
     }
 
     return todos.map((todo, index) => (
-        <div className="todo-item-container" key={index} draggable>
+        <div className="todo-item-container" key={index}>
             {todo.isComplete ?
                 (
                     <>
                         <span className="todo-item-toggle">
-                            <img src={completeTick} alt="tick" />
+                            <img src={completeTick} alt="tick" onClick={() => completeTodo(todo.id)} />
                         </span>
-                        <div className='todo-item-content completed' key={todo.id} onClick={() => completeTodo(todo.id)}>
+                        <div className='todo-item-content completed'>
                             {todo.text}
                         </div>
                     </>
                 ) : (
                     <>
                         <span className="todo-item-toggle">
-                            <img src={activeTick} alt="tick" />
+                            <img src={activeTick} alt="tick" onClick={() => completeTodo(todo.id)} />
                         </span>
-                        <div className='todo-item-content' key={todo.id} onClick={() => completeTodo(todo.id)}>
+                        <div className='todo-item-content'>
                             {todo.text}
                         </div>
                     </>
