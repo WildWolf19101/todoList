@@ -87,6 +87,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: move;
 }
 
 .todo-item-container:hover .todo-item-options {

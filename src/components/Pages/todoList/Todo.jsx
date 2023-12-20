@@ -13,6 +13,7 @@ const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
         value: ''
     });
 
+    // submitUpdate
     const submitUpdate = value => {
         updateTodo(edit.id, value);
         setEdit({
@@ -26,7 +27,7 @@ const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
     }
 
     return todos.map((todo, index) => (
-        <div className="todo-item-container" key={index}>
+        <div className="todo-item-container" key={index} draggable>
             {todo.isComplete ?
                 (
                     <>
