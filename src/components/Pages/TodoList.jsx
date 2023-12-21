@@ -9,9 +9,11 @@ import TodoFilter from './TodoList/TodoFilter'
 import '../../assets/css/TodoList.css'
 
 const TodoList = () => {
+    const [input, setInput] = useState('');
     const [todos, setTodos] = useState([]);
     const [filterStatus, setFilterStatus] = useState('all');
     const [isMounted, setIsMounted] = useState(false);
+    const [updateData, setUpdateData] = useState(null);
 
     useEffect(() => {
         // Kiểm tra xem component đã được mount chưa
@@ -34,31 +36,33 @@ const TodoList = () => {
     }, [todos, filterStatus, isMounted]);
 
     // add
-    const addTodo = todo => {
-        if (!todo.text || /^\s*$/.test(todo.text)) {
-            return;
+    const addTodo = (todo) => {
+        todo.preventDefault();
+
+        if (!input.trim()) {
+            alert("Please Fill Input Value");
+        } else if (updateData) {
+            setTodos(todos.map((item) => (item.id === updateData ? { ...item, text: input } : item)));
+            setInput('');
+            setToggle(true);
+            setUpdateData(null);
+        } else {
+            const newInput = { id: Math.random(), text: input };
+            setTodos([...todos, newInput]);
+            setInput('');
         }
-
-        const newTodos = [todo, ...todos];
-
-        setTodos(newTodos);
-        // console.log(...todos);
     };
 
     // update
-    const updateTodo = (todoId, newValue) => {
-        if (!newValue.text || /^\s*$/.test(newValue.text)) {
-            return;
-        }
-
-        setTodos(prev => prev.map(item => (item.id === todoId ? newValue : item)));
-    };
+    const updateTodo = (todo) => {
+        setInput(todo.text);
+        setUpdateData(todo.id);
+    }
 
     // delete
-    const removeTodo = id => {
-        const removedArr = [...todos].filter(todo => todo.id !== id);
-
-        setTodos(removedArr);
+    const removeTodo = todo => {
+        const updatedTodo = todos.filter((e) => e.id !== todo.id);
+        setTodos(updatedTodo);
     };
 
     // complete
@@ -102,7 +106,7 @@ const TodoList = () => {
         <>
             <div className="todo-container-wrapper">
                 <div className="todo-container">
-                    <Form onSubmit={addTodo} />
+                    <Form input={input} setInput={setInput} addTodo={addTodo} />
 
                     <TodoFilter todos={todos} filterStatus={filterStatus} handleFilterClick={handleFilterClick} />
 

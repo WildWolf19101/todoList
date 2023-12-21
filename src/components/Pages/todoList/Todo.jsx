@@ -11,23 +11,6 @@ import closeIcon from '../../../assets/images/delete.svg'
 import completeTick from '../../../assets/images/complete-tick.svg'
 
 const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
-    const [edit, setEdit] = useState({
-        id: null,
-        value: ''
-    });
-
-    // submitUpdate
-    const submitUpdate = value => {
-        updateTodo(edit.id, value);
-        setEdit({
-            id: null,
-            value: ''
-        });
-    };
-
-    if (edit.id) {
-        return <TodoForm edit={edit} onSubmit={submitUpdate} />;
-    }
 
     return todos.map((todo) => (
         <div className="todo-item-container" key={todo.id}>
@@ -52,10 +35,10 @@ const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
                     </>
                 )}
             <div className="todo-item-options">
-                <span className="icon-btn" onClick={() => setEdit({ id: todo.id, value: todo.text })}>
+                <span className="icon-btn" onClick={() => updateTodo(todo)}>
                     <img src={editIcon} alt="edit" />
                 </span>
-                <span className="icon-btn" onClick={() => removeTodo(todo.id)}>
+                <span className="icon-btn" onClick={() => removeTodo(todo)}>
                     <img src={closeIcon} alt="close" />
                 </span>
             </div>
