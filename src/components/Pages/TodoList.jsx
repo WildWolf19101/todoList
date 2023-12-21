@@ -40,11 +40,10 @@ const TodoList = () => {
         todo.preventDefault();
 
         if (!input.trim()) {
-            alert("Please Fill Input Value");
+            return;
         } else if (updateData) {
             setTodos(todos.map((item) => (item.id === updateData ? { ...item, text: input } : item)));
             setInput('');
-            setToggle(true);
             setUpdateData(null);
         } else {
             const newInput = { id: Math.random(), text: input };
