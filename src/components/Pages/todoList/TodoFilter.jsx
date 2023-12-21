@@ -8,21 +8,23 @@ const TodoFilter = ({ todos, filterStatus, handleFilterClick }) => {
     useEffect(() => {
         const countTasks = (filterStatus) => {
             const taskCount = todos.filter((task) => {
-                if (filterStatus === "all") {
+                if (filterStatus === 'all') {
                     return true;
-                } else if (filterStatus === "active") {
-                    return !task.completed;
-                } else if (filterStatus === "completed") {
-                    return task.completed;
+                } else if (filterStatus === 'active') {
+                    return !task.isComplete;
+                } else if (filterStatus === 'completed') {
+                    return task.isComplete;
                 } else {
                     return false;
                 }
             }).length;
+
             setFilteredTaskCount(taskCount);
         };
 
         countTasks(filterStatus);
     }, [todos, filterStatus]);
+
     return (
         <div className="todo-filter-container">
             <div className="todo-filter-count">{filteredTaskCount} items left</div>
