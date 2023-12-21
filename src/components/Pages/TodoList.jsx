@@ -9,18 +9,29 @@ import TodoFilter from './TodoList/TodoFilter'
 import '../../assets/css/TodoList.css'
 
 const TodoList = () => {
-    // Nạp trạng thái từ local storage khi component được mount
-    const initialTodos = JSON.parse(localStorage.getItem('todos')) || [];
-    const initialFilterStatus = localStorage.getItem('filterStatus') || 'all';
-
-    const [todos, setTodos] = useState(initialTodos);
-    const [filterStatus, setFilterStatus] = useState(initialFilterStatus);
+    const [todos, setTodos] = useState([]);
+    const [filterStatus, setFilterStatus] = useState('all');
+    const [isMounted, setIsMounted] = useState(false);
 
     useEffect(() => {
-        // Lưu trạng thái vào local storage mỗi khi todos hoặc filterStatus thay đổi
-        localStorage.setItem('todos', JSON.stringify(todos));
-        localStorage.setItem('filterStatus', filterStatus);
-    }, [todos, filterStatus]);
+        // Kiểm tra xem component đã được mount chưa
+        if (!isMounted) {
+            // Đặt trạng thái khởi tạo từ local storage
+            const initialTodos = JSON.parse(localStorage.getItem('todos')) || [];
+            const initialFilterStatus = localStorage.getItem('filterStatus') || 'all';
+
+            setTodos(initialTodos);
+            setFilterStatus(initialFilterStatus);
+
+            // Đánh dấu component đã được mount
+            setIsMounted(true);
+            console.log(initialTodos);
+        } else {
+            // Lưu trạng thái vào local storage khi todos hoặc filterStatus thay đổi
+            localStorage.setItem('todos', JSON.stringify(todos));
+            localStorage.setItem('filterStatus', filterStatus);
+        }
+    }, [todos, filterStatus, isMounted]);
 
     // add
     const addTodo = todo => {
