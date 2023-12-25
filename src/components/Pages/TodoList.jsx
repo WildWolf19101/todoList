@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 // todoList
-import Form from './TodoList/TodoForm'
+import TodoForm from './TodoList/TodoForm'
 import Todo from './TodoList/Todo'
 import TodoFilter from './TodoList/TodoFilter'
 
@@ -15,26 +15,6 @@ const TodoList = () => {
     const [isMounted, setIsMounted] = useState(false);
     const [updateData, setUpdateData] = useState(null);
 
-    useEffect(() => {
-        // Kiểm tra xem component đã được mount chưa
-        if (!isMounted) {
-            // Đặt trạng thái khởi tạo từ local storage
-            const initialTodos = JSON.parse(localStorage.getItem('todos')) || [];
-            const initialFilterStatus = localStorage.getItem('filterStatus') || 'all';
-
-            setTodos(initialTodos);
-            setFilterStatus(initialFilterStatus);
-
-            // Đánh dấu component đã được mount
-            setIsMounted(true);
-            console.log(initialTodos);
-        } else {
-            // Lưu trạng thái vào local storage khi todos hoặc filterStatus thay đổi
-            localStorage.setItem('todos', JSON.stringify(todos));
-            localStorage.setItem('filterStatus', filterStatus);
-        }
-    }, [todos, filterStatus, isMounted]);
-
     // add
     const addTodo = (todo) => {
         todo.preventDefault();
@@ -46,7 +26,7 @@ const TodoList = () => {
             setInput('');
             setUpdateData(null);
         } else {
-            const newInput = { id: Math.random(), text: input };
+            const newInput = { id: Math.floor(Math.random() * 10000), text: input };
             setTodos([...todos, newInput]);
             setInput('');
         }
@@ -100,12 +80,33 @@ const TodoList = () => {
         setFilterStatus(status);
     };
 
+    // Thường sẽ đặt useEffect ở bên dưới và chỉ trên mỗi return
+    useEffect(() => {
+        // Kiểm tra xem component đã được mount chưa
+        if (!isMounted) {
+            // Đặt trạng thái khởi tạo từ local storage
+            const initialTodos = JSON.parse(localStorage.getItem('todos')) || [];
+            const initialFilterStatus = localStorage.getItem('filterStatus') || 'all';
+
+            setTodos(initialTodos);
+            setFilterStatus(initialFilterStatus);
+
+            // Đánh dấu component đã được mount
+            setIsMounted(true);
+            // console.log(initialTodos);
+        } else {
+            // Lưu trạng thái vào local storage khi todos hoặc filterStatus thay đổi
+            localStorage.setItem('todos', JSON.stringify(todos));
+            localStorage.setItem('filterStatus', filterStatus);
+        }
+    }, [todos, filterStatus, isMounted]);
+
 
     return (
         <>
             <div className="todo-container-wrapper">
                 <div className="todo-container">
-                    <Form input={input} setInput={setInput} addTodo={addTodo} />
+                    <TodoForm input={input} setInput={setInput} addTodo={addTodo} />
 
                     <TodoFilter todos={todos} filterStatus={filterStatus} handleFilterClick={handleFilterClick} />
 
